@@ -1,0 +1,26 @@
+{
+  // Required
+  "name": "WP Section Filter",
+  "version": "0.0.1",
+  "manifest_version": 1,
+
+  // Recommended
+  "description": "A Chrome extension to filter the Washington Post homepage by section",
+  
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.washingtonpost.com/*",
+        "*://*.washingtonpost.com/regional/*"
+      ],
+      "css": [
+        "style.css"
+      ],
+      "js": [
+        "jquery-1.7.2.min.js",
+        "wp_section_filter.js"
+      ],
+      "run_at": "document_end"
+    }
+  ]
+}

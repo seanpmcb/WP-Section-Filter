@@ -1,0 +1,18 @@
+#header-v3 #main-nav li.top {
+    line-height: 16px ! important;
+    text-align: center;
+}
+
+#header-v3 a.showme {
+    color: #ffffff;
+    font-size: .8em;
+}
+
+#header-v3 li.top:hover a.showme {
+    color: #3b85ad;
+    background-color: #ffffff;
+}
+
+#header-v3 li.top:hover {
+    background-color: #ffffff;
+}
