@@ -56,8 +56,9 @@ $(document).ready(function(){
     $("#hot-topics-wrapper").append($hotTopicFader);
     $("#content").append($contentFader);
     $(document).on("click","a.showme",function(e){
-        $("a.reset").removeClass("reset").addClass("showme").html("Show Me")
-        $(this).addClass("reset").removeClass("showme").html("Reset");
+        $(this).siblings("a.top").addClass("showing");
+        $("a.reset").removeClass("reset showing").addClass("showme").html("Show Me")
+        $(this).addClass("reset showing").removeClass("showme").html("Reset ");
         reg = aRegexs[$(this).data("section")];
         $hotTopicFader.addClass("fader");
         $contentFader.addClass("fader");
@@ -77,7 +78,8 @@ $(document).ready(function(){
         });
     });
     $(document).on("click","a.reset",function(){
-        $(this).removeClass("reset").addClass("showme").html("Show Me");
+        $(this).siblings("a.top").removeClass("showing");
+        $(this).removeClass("reset showing").addClass("showme").html("Show Me");
         $(".standout").removeClass("standout");
         $(".no-standout").removeClass("no-standout");
         $(".fader").removeClass("fader");

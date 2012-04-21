@@ -10,8 +10,8 @@
   "content_scripts": [
     {
       "matches": [
-        "*://*.washingtonpost.com/*",
-        "*://*.washingtonpost.com/regional/*"
+        "*://*.washingtonpost.com/",
+        "*://*.washingtonpost.com/regional"
       ],
       "css": [
         "style.css"

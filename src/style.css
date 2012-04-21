@@ -45,3 +45,7 @@
     position: relative;
     z-index: 40 !important;
 }
+
+.showing {
+    color: #e68220 !important;
+}
