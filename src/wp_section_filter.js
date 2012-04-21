@@ -6,20 +6,20 @@ var $sectionNavs,
     $contentFader = $("<div id='contentFader'></div>")
     // TODO create regexs
     aRegexs = {
-        "politics": new RegExp("washingtonpost.com\/politics\/"),
-        "opinions": new RegExp("washingtonpost.com\/opinions\/"),
-        "local": new RegExp("washingtonpost.com\/local\/"),
-        "sports": new RegExp("washingtonpost.com\/sports\/"),
-        "national": new RegExp("washingtonpost.com\/national\/"),
-        "world": new RegExp("washingtonpost.com\/world\/"),
-        "business": new RegExp("washingtonpost.com\/business\/"),
-        "technology": new RegExp("washingtonpost.com\/(business\/)?technology\/"),
-        "lifestyle": new RegExp("washingtonpost.com\/lifestyle\/"),
-        "entertainment": new RegExp("washingtonpost.com\/entertainment\/"),
-        "blogs": new RegExp("washingtonpost.com\/blogs\/"),
-        //"photography": new RegExp("washingtonpost.com\/politics\/"),
-        //"video": new RegExp("washingtonpost.com\/politics\/"),
-        //"more": new RegExp("washingtonpost.com\/politics\/")
+        "politics": new RegExp("\/politics\/"),
+        "opinions": new RegExp("\/opinions\/"),
+        "local": new RegExp("\/local\/"),
+        "sports": new RegExp("\/sports\/"),
+        "national": new RegExp("\/national\/"),
+        "world": new RegExp("\/world\/"),
+        "business": new RegExp("\/business\/"),
+        "technology": new RegExp("\/technology\/"),
+        "lifestyle": new RegExp("\/lifestyle\/"),
+        "entertainment": new RegExp("\/entertainment\/"),
+        "blogs": new RegExp("\/blogs\/"),
+        //"photography": new RegExp("\/photography\/"),
+        //"video": new RegExp("\/video\/"),
+        //"more": new RegExp("\/politics\/")
     };
 
 showMe();
@@ -56,24 +56,30 @@ $(document).ready(function(){
     $("#hot-topics-wrapper").append($hotTopicFader);
     $("#content").append($contentFader);
     $(document).on("click","a.showme",function(e){
+        $("a.reset").removeClass("reset").addClass("showme").html("Show Me")
         $(this).addClass("reset").removeClass("showme").html("Reset");
         reg = aRegexs[$(this).data("section")];
         $hotTopicFader.addClass("fader");
         $contentFader.addClass("fader");
         $("#hot-topics-wrapper a").each(function(){
             if( reg.exec( $(this).attr("href") ) ){
-                $(this).addClass("standout");
+                $(this).addClass("standout").removeClass("no-standout");
+            } else {
+                $(this).removeClass("standout").addClass("no-standout");
             }
         });
         $("#content a").each(function(){
             if( reg.exec( $(this).attr("href") ) ){
-                $(this).addClass("standout");
+                $(this).addClass("standout").removeClass("no-standout");
+            } else {
+                $(this).removeClass("standout").addClass("no-standout");
             }
         });
     });
     $(document).on("click","a.reset",function(){
         $(this).removeClass("reset").addClass("showme").html("Show Me");
         $(".standout").removeClass("standout");
+        $(".no-standout").removeClass("no-standout");
         $(".fader").removeClass("fader");
     });
 });

@@ -32,8 +32,16 @@
     position: absolute;
     right: 0;
     top: 0;
+    z-index: 30 !important;
 }
 
 .standout {
-    z-index: 40;
+    position: relative;
+    z-index: 40 !important;
+}
+
+.no-standout {
+    opacity: 0.3;
+    position: relative;
+    z-index: 40 !important;
 }
