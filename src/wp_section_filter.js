@@ -2,6 +2,8 @@ var $sectionNavs,
     killAfter = 5000,
     timer,
     timeout,
+    $hotTopicFader = $("<div id='hotTopicFader'></div>")
+    $contentFader = $("<div id='contentFader'></div>")
     // TODO create regexs
     aRegexs = {
         "politics": new RegExp("washingtonpost.com\/politics\/"),
@@ -45,9 +47,33 @@ function addShowMes(){
     $sectionNavs.each(function(){
         section = $(this).data("tracking-section");
         if ( aRegexs[section] ){
-            console.log($(this))
-            $(this).find("a.top").after("<a class='showme' title='filter " + section + " only' href='javascript:;'>Show Me</a>");
+            $(this).find("a.top").after("<a class='showme' title='filter "+section+" only' href='javascript:;' data-section='"+section+"'>Show Me</a>");
         }
-        // TODO: add links
     });
 }
+
+$(document).ready(function(){
+    $("#hot-topics-wrapper").append($hotTopicFader);
+    $("#content").append($contentFader);
+    $(document).on("click","a.showme",function(e){
+        $(this).addClass("reset").removeClass("showme").html("Reset");
+        reg = aRegexs[$(this).data("section")];
+        $hotTopicFader.addClass("fader");
+        $contentFader.addClass("fader");
+        $("#hot-topics-wrapper a").each(function(){
+            if( reg.exec( $(this).attr("href") ) ){
+                $(this).addClass("standout");
+            }
+        });
+        $("#content a").each(function(){
+            if( reg.exec( $(this).attr("href") ) ){
+                $(this).addClass("standout");
+            }
+        });
+    });
+    $(document).on("click","a.reset",function(){
+        $(this).removeClass("reset").addClass("showme").html("Show Me");
+        $(".standout").removeClass("standout");
+        $(".fader").removeClass("fader");
+    });
+});

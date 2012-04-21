@@ -3,16 +3,37 @@
     text-align: center;
 }
 
-#header-v3 a.showme {
+#header-v3 a.showme,
+#header-v3 a.reset{
     color: #ffffff;
     font-size: .8em;
 }
 
-#header-v3 li.top:hover a.showme {
+#header-v3 li.top:hover a.showme,
+#header-v3 li.top:hover a.reset{
     color: #3b85ad;
     background-color: #ffffff;
 }
 
 #header-v3 li.top:hover {
     background-color: #ffffff;
+}
+
+#hot-topics-wrapper,
+#content {
+    position: relative;
+}
+
+.fader {
+    background-color: #ffffff;
+    bottom: 0;
+    left: 0;
+    opacity: 0.7;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.standout {
+    z-index: 40;
 }
