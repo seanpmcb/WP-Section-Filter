@@ -2,9 +2,9 @@ var $sectionNavs,
     killAfter = 5000,
     timer,
     timeout,
-    $hotTopicFader = $("<div id='hotTopicFader'></div>")
-    $contentFader = $("<div id='contentFader'></div>")
-    // TODO create regexs
+    $hotTopicFader = $("<div id='hotTopicFader'></div>"),
+    $contentFader = $("<div id='contentFader'></div>"),
+    // Regexs to identify sections
     aRegexs = {
         "politics": new RegExp("\/politics\/"),
         "opinions": new RegExp("\/opinions\/"),
@@ -43,6 +43,9 @@ function killTimer(){
     timeout && clearTimeout(timeout);
 }
 
+/**
+ * Add show me links to each section in the masthead
+ */
 function addShowMes(){
     $sectionNavs.each(function(){
         section = $(this).data("tracking-section");
@@ -53,15 +56,30 @@ function addShowMes(){
 }
 
 $(document).ready(function(){
+    // Get necessary link wrappers
     $("#hot-topics-wrapper").append($hotTopicFader);
     $("#content").append($contentFader);
+    
+    /**
+     * Show me link clicked
+     */
     $(document).on("click","a.showme",function(e){
+        // Remove highlite of what was previously showing
+        $("a.reset").siblings("a.top").removeClass("showing");
+        $("a.reset").removeClass("reset showing").addClass("showme").html("Show Me");
+        
+        // Highlite what is currently showing
         $(this).siblings("a.top").addClass("showing");
-        $("a.reset").removeClass("reset showing").addClass("showme").html("Show Me")
-        $(this).addClass("reset showing").removeClass("showme").html("Reset ");
+        $(this).addClass("reset showing").removeClass("showme").html("Reset");
+        
+        // Get appropriate regex
         reg = aRegexs[$(this).data("section")];
+        
+        // Fade everything
         $hotTopicFader.addClass("fader");
         $contentFader.addClass("fader");
+        
+        // Cause links to standout or not
         $("#hot-topics-wrapper a").each(function(){
             if( reg.exec( $(this).attr("href") ) ){
                 $(this).addClass("standout").removeClass("no-standout");
@@ -77,9 +95,16 @@ $(document).ready(function(){
             }
         });
     });
+    
+    /**
+     * Reset link clicked
+     */
     $(document).on("click","a.reset",function(){
+        // Remove highlite on what's showing
         $(this).siblings("a.top").removeClass("showing");
         $(this).removeClass("reset showing").addClass("showme").html("Show Me");
+        
+        // Clear all out sections
         $(".standout").removeClass("standout");
         $(".no-standout").removeClass("no-standout");
         $(".fader").removeClass("fader");
