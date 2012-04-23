@@ -51,7 +51,9 @@
 }
 
 .module:hover,
-.module:hover .no-standout {
+.module:hover .no-standout,
+#at-a-glance div.wp-column:hover,
+#at-a-glance div.wp-column:hover a {
     opacity: 1.0 !important;
     z-index: 40 !important;
 }

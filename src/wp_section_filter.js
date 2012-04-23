@@ -6,20 +6,20 @@ var $sectionNavs,
     $contentFader = $("<div id='contentFader'></div>"),
     // Regexs to identify sections
     aRegexs = {
-        "politics": new RegExp("\/politics\/"),
-        "opinions": new RegExp("\/opinions\/"),
-        "local": new RegExp("\/local\/"),
-        "sports": new RegExp("\/sports\/"),
-        "national": new RegExp("\/national\/"),
-        "world": new RegExp("\/world\/"),
-        "business": new RegExp("\/business\/"),
-        "technology": new RegExp("\/technology\/"),
-        "lifestyle": new RegExp("\/lifestyle\/"),
-        "entertainment": new RegExp("\/entertainment\/"),
-        "blogs": new RegExp("\/blogs\/"),
-        //"photography": new RegExp("\/photography\/"),
-        //"video": new RegExp("\/video\/"),
-        //"more": new RegExp("\/politics\/")
+        "politics": new RegExp("\/politics"),
+        "opinions": new RegExp("\/opinions"),
+        "local": new RegExp("\/local"),
+        "sports": new RegExp("\/sports"),
+        "national": new RegExp("\/national"),
+        "world": new RegExp("\/world"),
+        "business": new RegExp("\/business"),
+        "technology": new RegExp("\/technology"),
+        "lifestyle": new RegExp("\/lifestyle"),
+        "entertainment": new RegExp("\/entertainment"),
+        "blogs": new RegExp("\/blogs"),
+        //"photography": new RegExp("\/photography"),
+        //"video": new RegExp("\/video"),
+        //"more": new RegExp("\/more")
     };
 
 showMe();
