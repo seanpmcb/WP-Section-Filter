@@ -11,7 +11,9 @@
     {
       "matches": [
         "*://*.washingtonpost.com/",
-        "*://*.washingtonpost.com/regional"
+        "*://*.washingtonpost.com/regional",
+        "*://*.washingtonpost.com/?reload=true",
+        "*://*.washingtonpost.com/regional?reload=true"
       ],
       "css": [
         "style.css"
